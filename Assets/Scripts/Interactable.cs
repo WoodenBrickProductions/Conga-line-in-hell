@@ -21,6 +21,12 @@ public class Interactable : MonoBehaviour
         interactableObject.OnSelect();
     }
 
+    public void SetActive(bool active)
+    {
+        gameObject.SetActive(active);
+        collidor.enabled = active;
+    }
+
     private void OnDrawGizmos()
     {
         if (!Application.isPlaying)

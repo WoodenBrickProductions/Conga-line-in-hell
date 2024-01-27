@@ -20,7 +20,7 @@ public class CongoScript : MonoBehaviour
     Vector3 previousPos;
     public float minDistanceForBoop = 0.001f;
     public float boopStrength = 1f;
-    private float boopBuildup = 0;
+    [System.NonSerialized] private float boopBuildup = 0;
     int layerMask;
 
     [Header("Ray pathing")]
@@ -32,7 +32,8 @@ public class CongoScript : MonoBehaviour
     private float rayTimer = 0;
     private float[] distances = new float[4];
     private float boop = 1;
-    private float minDistanceToNext = 0.9f;
+    [SerializeField] private float minDistanceToNext = 0.9f;
+    [SerializeField] private float minDistanceToWall = 0.55f;
 
     void Start()
     {
@@ -40,7 +41,7 @@ public class CongoScript : MonoBehaviour
         currentDirection = Vector3.forward;
         body = transform.GetChild(0);
         layerMask = LayerMask.GetMask("Ground") | LayerMask.GetMask("Congo");
-        renderer.material.color = new Color(Random.Range(0, 2), Random.Range(0, 2), Random.Range(0, 2));
+        //renderer.material.color = new Color(Random.Range(0, 2), Random.Range(0, 2), Random.Range(0, 2));
     }
 
     // Update is called once per frame
@@ -49,16 +50,16 @@ public class CongoScript : MonoBehaviour
         if (!leader && nextInLine == null)
             return;
 
-        if((transform.position - previousPos).magnitude > minDistanceForBoop)
-        {
-            boopBuildup = 0;
-            boop = 1;
-        }
-        else
-        {
-            boopBuildup += 0.1f;
-            boop = boopStrength + boopBuildup;
-        }
+        //if((transform.position - previousPos).magnitude > minDistanceForBoop)
+        //{
+        //    boopBuildup = 0;
+        //    boop = 1;
+        //}
+        //else
+        //{
+        //    boopBuildup += 0.1f;
+        //    boop = boopStrength + boopBuildup;
+        //}
 
         transform.forward = Vector3.RotateTowards(transform.forward, currentDirection, 5 * Time.deltaTime, 1);
 
@@ -100,6 +101,10 @@ public class CongoScript : MonoBehaviour
         }
 
         rayTimer = rayCooldown;
+
+        float distance = DistanceInDirection(transform.forward);
+        if (distance > minDistanceToWall)
+            return;
 
         DoRaycasts();
     }
@@ -146,11 +151,11 @@ public class CongoScript : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(body.position, dirNormalized, out hit, Mathf.Infinity, wallMask))
         {
-            Debug.Log(hit.collider.gameObject.transform.parent.name);
+            Debug.Log(hit.collider.transform.parent.name);
             return hit.distance;
         }
 
-        return 0;
+        return 1000;
     }
 
     private void OnCollisionEnter(Collision collision)

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public abstract class InteractableObject : MonoBehaviour
 {
-    public SelectionContext context = new SelectionContext();
-    public SelectionContext GetContext()
+    protected SelectionContext context = new SelectionContext();
+    public virtual SelectionContext GetContext()
     {
         return context;
     }

@@ -13,19 +13,30 @@ public class CameraControl : MonoBehaviour
     public Transform BLBound;
     public Transform TRBound;
 
-    private Transform cameraTM;
+    private Transform cameraOrigin;
+    private Transform cameraHead;
     [SerializeField] private float accelerationSensitivity = 0.05f;
     private float hAcceleration;
     private float vAcceleration;
 
+    public int minZoom = 45;
+    public int maxZoom = 20;
+    private int currentZoom = 0;
+
     private bool inFocus = false;
+
+    private void Awake()
+    {
+        currentZoom = minZoom;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         Application.focusChanged += Application_focusChanged;
 
-        cameraTM = Camera.main.transform.parent;
+        cameraHead = Camera.main.transform;
+        cameraOrigin = Camera.main.transform.parent.parent;
     }
 
     private void OnDestroy()
@@ -64,6 +75,16 @@ public class CameraControl : MonoBehaviour
             ChangeFocus(false);
         }
 
+        if(Mathf.Abs(Input.GetAxis("Mouse ScrollWheel")) > 0.01f)
+        {
+            float amount = -10 * Input.GetAxis("Mouse ScrollWheel");
+            currentZoom = Mathf.Clamp(currentZoom + (int)(amount),  maxZoom, minZoom);
+        }
+
+        Vector3 pos = cameraHead.transform.localPosition;
+        pos.z = Mathf.MoveTowards(pos.z, -currentZoom, Mathf.Max(1, Mathf.Abs(currentZoom - pos.z)) * Time.deltaTime);
+        cameraHead.transform.localPosition = pos;
+
         MoveCamera();
     }
 
@@ -94,17 +115,17 @@ public class CameraControl : MonoBehaviour
         }
 
         float x = hAcceleration * CameraSpeed * Time.deltaTime;
-        var nX = cameraTM.position.x + x;
-        if (nX > TRBound.position.x ||
-            nX < BLBound.position.x)
+        var nX = cameraOrigin.localPosition.x + x;
+        if (nX > TRBound.localPosition.x ||
+            nX < BLBound.localPosition.x)
             x = 0;
 
         float z = vAcceleration * CameraSpeed * Time.deltaTime;
-        var nZ = cameraTM.position.z + z;
-        if (nZ > TRBound.position.z ||
-            nZ < BLBound.position.z)
+        var nZ = cameraOrigin.localPosition.z + z;
+        if (nZ > TRBound.localPosition.z ||
+            nZ < BLBound.localPosition.z)
             z = 0;
 
-        cameraTM.position += new Vector3(x, 0, z);
+        cameraOrigin.localPosition += new Vector3(x, 0, z);
     }
 }

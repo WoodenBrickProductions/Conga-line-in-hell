@@ -9,6 +9,11 @@ public enum SelectionContextAction
     PUSH_RIGHT,
     PUSH_DOWN,
     PUSH_LEFT,
+    DOOR_OPEN,
+    DOOR_CLOSE,
+    PICKUP_FOOD,
+    LEVER_PULL,
+    WALL_DOWN_WITH_TRIGGER,
 }
 
 public class SelectionContext
@@ -28,6 +33,7 @@ public class ContextControl : MonoBehaviour
 
     private Interactable selected;
     private Interactable highlighted;
+    private bool mousePressed;
     private void Awake()
     {
         if(instance != null)
@@ -49,9 +55,13 @@ public class ContextControl : MonoBehaviour
 
     private void OnPress(SelectionContextAction dir)
     {
-        selected.interactableObject.context.actions[dir].Invoke(dir);
+        var context = selected.interactableObject.GetContext();
+        if(context != null)
+        {
+            context.actions[dir].Invoke(dir);
+        }
+
         HideContextWheel();
-        selected = null;
     }
 
     void Start()
@@ -62,6 +72,11 @@ public class ContextControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetMouseButtonDown(1))
+        {
+            HideContextWheel();
+        }
+
         if (selected != null)
             return;
 
@@ -71,6 +86,7 @@ public class ContextControl : MonoBehaviour
         {
             SelectCurrent();
         }
+
     }
 
     static Plane mousePlane = new Plane(Vector3.up, 0);
@@ -84,7 +100,7 @@ public class ContextControl : MonoBehaviour
         if (selected != null)
         {
             selected.OnSelect();
-            ShowContextWheel(selected.interactableObject.context);
+            ShowContextWheel(selected.interactableObject.GetContext());
         }
     }
 
@@ -133,6 +149,7 @@ public class ContextControl : MonoBehaviour
 
     public void HideContextWheel()
     {
+        selected = null;
         contextWheel.ClearContext();
         contextWheel.gameObject.SetActive(false);
     }
