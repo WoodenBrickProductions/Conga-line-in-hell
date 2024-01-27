@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class CameraControl : MonoBehaviour
 {
-    [SerializeField] private bool cameraScroll = true;
+    [SerializeField] private bool cameraScroll = false;
     [SerializeField] private float CameraSpeed = 100;
+    [SerializeField] private float panStrength = 0.5f;
     [SerializeField] private float slowDragDeadzone;
     [SerializeField] private float fastDragDeadzone;
 
@@ -25,9 +26,11 @@ public class CameraControl : MonoBehaviour
         Application.focusChanged += Application_focusChanged;
 
         cameraTM = Camera.main.transform.parent;
+    }
 
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.Confined;
+    private void OnDestroy()
+    {
+        Application.focusChanged -= Application_focusChanged;
     }
 
     private void Application_focusChanged(bool obj)
@@ -66,11 +69,11 @@ public class CameraControl : MonoBehaviour
 
     private void MoveCamera()
     {
-        int horizontal = (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A) || (cameraScroll && Input.mousePosition.x < fastDragDeadzone) ? -1 : 0) +
-                         (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D) || (cameraScroll && Input.mousePosition.x > Screen.width - fastDragDeadzone) ? 1 : 0);
+        float horizontal = (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A) || (cameraScroll && Input.mousePosition.x < fastDragDeadzone) ? -1 * panStrength : 0) +
+                         (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D) || (cameraScroll && Input.mousePosition.x > Screen.width - fastDragDeadzone) ? 1 * panStrength : 0);
 
-        int vertical = (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W) || (cameraScroll && Input.mousePosition.y > Screen.height - fastDragDeadzone) ? 1 : 0) +
-                       (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S) || (cameraScroll && Input.mousePosition.y < fastDragDeadzone) ? -1 : 0);
+        float vertical = (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W) || (cameraScroll && Input.mousePosition.y > Screen.height - fastDragDeadzone) ? 1 * panStrength : 0) +
+                       (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S) || (cameraScroll && Input.mousePosition.y < fastDragDeadzone) ? -1 * panStrength : 0);
 
         if(horizontal != 0)
         {
