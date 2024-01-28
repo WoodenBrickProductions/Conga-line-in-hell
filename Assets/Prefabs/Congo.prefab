@@ -11,13 +11,14 @@ GameObject:
   - component: {fileID: 6757663886902099184}
   - component: {fileID: 2293141763456681079}
   - component: {fileID: 6591936363744041937}
+  - component: {fileID: 2587765143636906952}
   m_Layer: 7
   m_Name: Congo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6757663886902099184
 Transform:
   m_ObjectHideFlags: 0
@@ -26,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 279160533545748123}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -79,8 +80,29 @@ MonoBehaviour:
   minDistanceForBoop: 0.01
   boopStrength: 3
   nextInLine: {fileID: 0}
-  minDistanceToNext: 0.9
-  minDistanceToWall: 0.55
+  minDistanceToNext: 5
+  minDistanceToWall: 2
+--- !u!135 &2587765143636906952
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 279160533545748123}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0.62, z: 0}
 --- !u!1 &8550617051124258617
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,7 +320,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6264300164832927932}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4edb8f0d0a06f1d4085fe023f5391765, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -322,7 +344,7 @@ Animator:
   m_GameObject: {fileID: 6264300164832927932}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 803c23bac3dffd14a80e055a865d298d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

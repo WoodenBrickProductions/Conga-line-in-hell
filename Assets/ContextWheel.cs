@@ -17,10 +17,30 @@ public class ContextWheel : MonoBehaviour
 
     public event Action<SelectionContextAction> OnPress;
 
+    private float width, height;
+    public float offset = 300;
+    private RectTransform rect;
+    private void Awake()
+    {
+        width = Screen.width;
+        height = Screen.height;
+        rect = GetComponent<RectTransform>();
+    }
+
     public TextMeshProUGUI centerText;
     public TextMeshProUGUI[] texts;
     public Button[] buttons;
     private SelectionContextAction[] boundActions = new SelectionContextAction[4];
+
+    //private void Update()
+    //{
+    //    Vector2 pos = rect.position;
+    //    float clampedX = Mathf.Clamp(Input.mousePosition.x, 0 + offset, width - offset);
+    //    float clampedY = Mathf.Clamp(Input.mousePosition.y, 0 + offset, height - offset);
+    //    pos.x = Mathf.MoveTowards(pos.x, clampedX, 5 * Time.deltaTime);
+    //    pos.y = Mathf.MoveTowards(pos.y, clampedY, 5 * Time.deltaTime);
+    //    rect.position = pos;
+    //}
 
     public void SetupContext(SelectionContext context)
     {

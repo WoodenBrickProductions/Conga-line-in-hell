@@ -91,6 +91,10 @@ public class CongoScript : MonoBehaviour
     {
         if(leader || (nextInLine.position - transform.position).magnitude > minDistanceToNext)
             rigidbody.AddForce(pushStrength * boop * transform.forward, ForceMode.Force);
+        else
+        {
+            rigidbody.velocity = Vector3.zero;
+        }
     }
 
     public void SetLeader(bool leader)

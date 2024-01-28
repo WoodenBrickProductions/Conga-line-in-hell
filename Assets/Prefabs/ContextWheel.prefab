@@ -64,7 +64,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.11792451, g: 1, b: 0.97354805, a: 0.25490198}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.25490198}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -246,6 +246,31 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6945198913957252886}
     m_Modifications:
+    - target: {fileID: 1807966140341619590, guid: 3c3804bbd141e2146990d749ec18bc79,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.70710784
+      objectReference: {fileID: 0}
+    - target: {fileID: 1807966140341619590, guid: 3c3804bbd141e2146990d749ec18bc79,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1807966140341619590, guid: 3c3804bbd141e2146990d749ec18bc79,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1807966140341619590, guid: 3c3804bbd141e2146990d749ec18bc79,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.70710576
+      objectReference: {fileID: 0}
+    - target: {fileID: 1807966140341619590, guid: 3c3804bbd141e2146990d749ec18bc79,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 3525899093376512628, guid: 3c3804bbd141e2146990d749ec18bc79,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -255,6 +280,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Left
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942164229434665266, guid: 3c3804bbd141e2146990d749ec18bc79,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8107544065562819380, guid: 3c3804bbd141e2146990d749ec18bc79,
         type: 3}
@@ -361,6 +391,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: ContextLeft
       objectReference: {fileID: 0}
+    - target: {fileID: 8942105398992616633, guid: 3c3804bbd141e2146990d749ec18bc79,
+        type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8942105398992616633, guid: 3c3804bbd141e2146990d749ec18bc79,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 72f127aa35a2cec49ba87c504fa1942b,
+        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -404,6 +445,31 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6945198913957252886}
     m_Modifications:
+    - target: {fileID: 1807966140341619590, guid: 3c3804bbd141e2146990d749ec18bc79,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.70711386
+      objectReference: {fileID: 0}
+    - target: {fileID: 1807966140341619590, guid: 3c3804bbd141e2146990d749ec18bc79,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1807966140341619590, guid: 3c3804bbd141e2146990d749ec18bc79,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1807966140341619590, guid: 3c3804bbd141e2146990d749ec18bc79,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.7070998
+      objectReference: {fileID: 0}
+    - target: {fileID: 1807966140341619590, guid: 3c3804bbd141e2146990d749ec18bc79,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -89.999
+      objectReference: {fileID: 0}
     - target: {fileID: 3525899093376512628, guid: 3c3804bbd141e2146990d749ec18bc79,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -413,6 +479,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Right
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942164229434665266, guid: 3c3804bbd141e2146990d749ec18bc79,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8107544065562819380, guid: 3c3804bbd141e2146990d749ec18bc79,
         type: 3}
@@ -519,6 +590,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: ContextRight
       objectReference: {fileID: 0}
+    - target: {fileID: 8942105398992616633, guid: 3c3804bbd141e2146990d749ec18bc79,
+        type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8942105398992616633, guid: 3c3804bbd141e2146990d749ec18bc79,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 72f127aa35a2cec49ba87c504fa1942b,
+        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -562,6 +644,31 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6945198913957252886}
     m_Modifications:
+    - target: {fileID: 1807966140341619590, guid: 3c3804bbd141e2146990d749ec18bc79,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.0000029504295
+      objectReference: {fileID: 0}
+    - target: {fileID: 1807966140341619590, guid: 3c3804bbd141e2146990d749ec18bc79,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1807966140341619590, guid: 3c3804bbd141e2146990d749ec18bc79,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1807966140341619590, guid: 3c3804bbd141e2146990d749ec18bc79,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1807966140341619590, guid: 3c3804bbd141e2146990d749ec18bc79,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -180
+      objectReference: {fileID: 0}
     - target: {fileID: 3525899093376512628, guid: 3c3804bbd141e2146990d749ec18bc79,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -571,6 +678,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Down
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942164229434665266, guid: 3c3804bbd141e2146990d749ec18bc79,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8107544065562819380, guid: 3c3804bbd141e2146990d749ec18bc79,
         type: 3}
@@ -677,6 +789,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: ContextDown
       objectReference: {fileID: 0}
+    - target: {fileID: 8942105398992616633, guid: 3c3804bbd141e2146990d749ec18bc79,
+        type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8942105398992616633, guid: 3c3804bbd141e2146990d749ec18bc79,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 72f127aa35a2cec49ba87c504fa1942b,
+        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -725,6 +848,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 4721982704613791178}
+    - target: {fileID: 4942164229434665266, guid: 3c3804bbd141e2146990d749ec18bc79,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8107544065562819380, guid: 3c3804bbd141e2146990d749ec18bc79,
         type: 3}
       propertyPath: m_Pivot.x
@@ -830,6 +958,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: ContextUp
       objectReference: {fileID: 0}
+    - target: {fileID: 8942105398992616633, guid: 3c3804bbd141e2146990d749ec18bc79,
+        type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8942105398992616633, guid: 3c3804bbd141e2146990d749ec18bc79,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 72f127aa35a2cec49ba87c504fa1942b,
+        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
