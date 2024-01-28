@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 715cc6a3178593b439e8ec3a5984315c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   singleUse: 0
   OnUnpulled:
     action: 0
@@ -229,11 +230,26 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -4683669308469848369, guid: 0230cf9a5c8780e40b143048c5178a2b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dd4ce60530440a0438bccfe401942d0f, type: 2}
+    - target: {fileID: -4471382983095882790, guid: 0230cf9a5c8780e40b143048c5178a2b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 96a6c9823ad4f4d40b2cc48d9301cc78, type: 2}
     - target: {fileID: 919132149155446097, guid: 0230cf9a5c8780e40b143048c5178a2b,
         type: 3}
       propertyPath: m_Name
       value: lever
       objectReference: {fileID: 0}
+    - target: {fileID: 7202271454713460447, guid: 0230cf9a5c8780e40b143048c5178a2b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 96a6c9823ad4f4d40b2cc48d9301cc78, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
