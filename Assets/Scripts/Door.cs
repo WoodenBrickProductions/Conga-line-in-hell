@@ -11,6 +11,11 @@ public class Door : InteractableObject
     public Collider collider;
     private float currentAngle;
 
+    public bool useExtraContext = false;
+    public bool extraContextSingle = false;
+    private bool extraContextUsed = false;
+    public LeverActionContext extraContext;
+
     void Awake()
     {
         context.name = "Door";
@@ -32,7 +37,7 @@ public class Door : InteractableObject
     private void Update()
     {
         Vector3 angle = pivot.localEulerAngles;
-        angle.y = Mathf.MoveTowards(angle.y, currentAngle, Mathf.Max(4, Mathf.Abs(angle.z - currentAngle)) * 5 * Time.deltaTime);
+        angle.y = Mathf.MoveTowards(angle.y, currentAngle, Mathf.Max(4, Mathf.Abs(angle.z - currentAngle)) * 50 * Time.deltaTime);
         pivot.localEulerAngles = angle;
     }
 
@@ -43,6 +48,14 @@ public class Door : InteractableObject
             case SelectionContextAction.DOOR_OPEN:
                 currentAngle = angleOpen;
                 collider.enabled = false;
+
+                if (useExtraContext && !extraContextUsed)
+                {
+                    if (extraContextSingle)
+                        extraContextUsed = true;
+
+                    GlobalBehaviour.instance.StartCoroutine(Lever.MakeAppearCoroutine(extraContext));
+                }
                 break;
             case SelectionContextAction.DOOR_CLOSE:
                 currentAngle = angleClosed;

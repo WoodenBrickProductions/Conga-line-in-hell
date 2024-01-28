@@ -47,6 +47,12 @@ public class CongoScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(nextInLine == null)
+        {
+            leader = true;
+            nextInLine = transform;
+        }
+
         if (!leader && nextInLine == null)
             return;
 
@@ -156,6 +162,13 @@ public class CongoScript : MonoBehaviour
         }
 
         return 1000;
+    }
+
+    public void Destroy()
+    {
+        // Death sound
+        // Death anim
+        Destroy(gameObject);
     }
 
     private void OnCollisionEnter(Collision collision)

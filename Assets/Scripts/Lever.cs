@@ -36,7 +36,7 @@ public class Lever : InteractableObject
     private void Awake()
     {
         pulled = false;
-        context.name = "Push wall";
+        context.name = "Lever";
         context.actions = new Dictionary<SelectionContextAction, System.Action<SelectionContextAction>>();
         context.actions.Add(SelectionContextAction.LEVER_PULL, LeverFunc);
     }
@@ -91,7 +91,42 @@ public class Lever : InteractableObject
 
     private void MakeAppear(LeverActionContext context)
     {
-        StartCoroutine(MakeAppearCoroutine(context));
+        if(context.cascade)
+        {
+            StartCoroutine(MakeAppearCoroutine(context));
+        }
+        else
+        {
+            context.target.gameObject.SetActive(true);
+            context.target.transform.position += context.position;
+        }
+    }
+
+   
+
+    private void MakeDissapear(LeverActionContext context)
+    {
+        context.target.gameObject.SetActive(false);
+        context.target.transform.position -= context.position;
+    }
+
+    private void MakeMove(LeverActionContext context)
+    {
+
+    }
+
+    private void MakeSendAction(LeverActionContext context)
+    {
+        var sendContext = context.target.GetContext();
+
+        if (sendContext == null)
+            return;
+
+        sendContext.actions[context.send_action].Invoke(context.send_action);
+    }
+
+    public override void OnSelect()
+    {
     }
 
     const float tick = 1.0f / 60;
@@ -121,11 +156,11 @@ public class Lever : InteractableObject
 
         float nextTimer = 0;
         int currentNext = 1;
-        
+
         float nextCooldown = 0.3f / maxNext;
-        
+
         Vector3[] targetPositions = new Vector3[maxNext];
-        for(int i = 0; i < maxNext; i++)
+        for (int i = 0; i < maxNext; i++)
         {
             targetPositions[i] = children[i].transform.position + context.position;
         }
@@ -139,7 +174,7 @@ public class Lever : InteractableObject
         {
             for (int i = 0; i < maxNext; i++)
             {
-                if(i >= currentNext)
+                if (i >= currentNext)
                 {
                     break;
                 }
@@ -147,13 +182,13 @@ public class Lever : InteractableObject
                 Vector3 position = children[i].transform.position;
                 children[i].transform.position = Vector3.MoveTowards(position, targetPositions[i], speed * tick);
             }
-        
-            if(nextTimer < 0 && (currentNext < maxNext))
+
+            if (nextTimer < 0 && (currentNext < maxNext))
             {
-                int countActivated = Mathf.Max(1, Mathf.Abs((int) (nextTimer / nextCooldown)));
+                int countActivated = Mathf.Max(1, Mathf.Abs((int)(nextTimer / nextCooldown)));
                 nextTimer = nextCooldown;
 
-                for(int i = 0; i < countActivated; i++)
+                for (int i = 0; i < countActivated; i++)
                 {
                     if (currentNext >= maxNext)
                         break;
@@ -164,33 +199,9 @@ public class Lever : InteractableObject
 
             nextTimer -= tick;
             wholeTime -= tick;
-            yield return wait;  
+            yield return wait;
         }
 
         yield return 0;
-    }
-
-    private void MakeDissapear(LeverActionContext context)
-    {
-
-    }
-
-    private void MakeMove(LeverActionContext context)
-    {
-
-    }
-
-    private void MakeSendAction(LeverActionContext context)
-    {
-        var sendContext = context.target.GetContext();
-
-        if (sendContext == null)
-            return;
-
-        sendContext.actions[context.send_action].Invoke(context.send_action);
-    }
-
-    public override void OnSelect()
-    {
     }
 }

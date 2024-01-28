@@ -5,6 +5,11 @@ using UnityEngine;
 public class CongoLine : MonoBehaviour
 {
     List<CongoScript> congos = new List<CongoScript>();
+    public GameObject congoPrefab;
+    public Transform instantiationPoint;
+    public float congoCooldown = 1;
+    private float congoTimer = 0;
+    private Transform previous;
 
     private void Awake()
     {
@@ -30,5 +35,29 @@ public class CongoLine : MonoBehaviour
                 congos[i].nextInLine = congos[i - 1].transform;
             }
         }
+    }
+
+    private void Update()
+    {
+        if(congoTimer > 0)
+        {
+            congoTimer -= Time.deltaTime;
+            return;
+        }
+
+        congoTimer = congoCooldown;
+        var go = Instantiate(congoPrefab, transform);
+        go.transform.position = instantiationPoint.position;
+        go.SetActive(true);
+
+        var congo = go.GetComponent<CongoScript>();
+        if(previous == null)
+        {
+            congo.SetLeader(true);
+            previous = congo.transform;
+        }
+        congo.nextInLine = previous;
+        previous = congo.transform;
+
     }
 }
