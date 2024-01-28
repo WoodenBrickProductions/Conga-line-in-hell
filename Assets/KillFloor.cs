@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class KillFloor : MonoBehaviour
 {
+    public AudioSource audio;
+
     private void OnTriggerEnter(Collider other)
     {
         var congo = other.GetComponent<CongoScript>();
@@ -11,5 +13,8 @@ public class KillFloor : MonoBehaviour
         {
             congo.Destroy();
         }
+
+        if (audio != null)
+            audio.Play();
     }
 }

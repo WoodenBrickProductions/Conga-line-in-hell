@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class InteractableObject : MonoBehaviour
 {
+    public AudioSource audioSource;
     protected SelectionContext context = new SelectionContext();
     public virtual SelectionContext GetContext()
     {

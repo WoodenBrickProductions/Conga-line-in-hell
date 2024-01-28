@@ -52,6 +52,11 @@ public class Wall : InteractableObject
                 moving = false;
                 break;
         }
+
+        if (audioSource != null)
+        {
+            audioSource.Play();
+        }
     }
 
     public override void OnSelect()

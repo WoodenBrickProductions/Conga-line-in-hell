@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-    private SphereCollider collidor;
+    public SphereCollider collidor;
 
     public InteractableObject interactableObject;
 

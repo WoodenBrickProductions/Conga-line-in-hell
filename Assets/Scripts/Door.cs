@@ -64,6 +64,11 @@ public class Door : InteractableObject
             default:
                 break;
         }
+
+        if (audioSource != null)
+        {
+            audioSource.Play();
+        }
     }
 
     public override void OnSelect()

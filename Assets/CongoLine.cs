@@ -10,7 +10,7 @@ public class CongoLine : MonoBehaviour
     public float congoCooldown = 1;
     private float congoTimer = 0;
     private Transform previous;
-
+    private int count = 7;
     private void Awake()
     {
         congos.AddRange(GetComponentsInChildren<CongoScript>());
@@ -44,7 +44,9 @@ public class CongoLine : MonoBehaviour
             congoTimer -= Time.deltaTime;
             return;
         }
-
+        if (count == 0)
+            return;
+        count--;
         congoTimer = congoCooldown;
         var go = Instantiate(congoPrefab, transform);
         go.transform.position = instantiationPoint.position;

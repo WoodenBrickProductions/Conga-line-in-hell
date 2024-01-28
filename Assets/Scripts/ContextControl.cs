@@ -137,7 +137,7 @@ public class ContextControl : MonoBehaviour
             selector.position = new Vector3(-1000, -1000, -1000);
             return;
         }
-        
+        selector.transform.localScale = Vector3.one * highlighted.collidor.radius;
         selector.position = highlighted.transform.position;
     }
 

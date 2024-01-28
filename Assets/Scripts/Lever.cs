@@ -68,6 +68,10 @@ public class Lever : InteractableObject
             LeverFunc(OnUnpulled);
         }
 
+        if (audioSource != null)
+        {
+            audioSource.Play();
+        }
     }
 
     private void LeverFunc(LeverActionContext context)
